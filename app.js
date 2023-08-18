@@ -24,7 +24,18 @@ const con = mysql.createConnection({
 // cssファイルの取得
 app.use(express.static("assets"));
 
-app.post("/", (req, res) => {
+// mysqlからデータを持ってくる
+app.get("/", (req, res) => {
+  const sql = "select * from results";
+  con.query(sql, function (err, result, fields) {
+    if (err) throw err;
+    res.render("index", {
+      users: result
+    });
+  });
+});
+
+app.post("/message", (req, res) => {
   const sql = "INSERT INTO results SET ?";
   con.query(sql, req.body, function (err, result, fields) {
     if (err) throw err;

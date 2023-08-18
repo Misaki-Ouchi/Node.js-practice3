@@ -30,13 +30,11 @@ button {
 .colorRed {
   color: red;
 }
-#thanks {
-  background-color: #a00;
-}
+#home a,
 #thanks p {
   text-align: center;
-  color: #ddd;
+  color: #333;
   font-weight: bold;
-  font-size: 3rem;
+  font-size: 2rem;
   margin-top: 20%;
 }
