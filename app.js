@@ -35,7 +35,8 @@ app.get("/", (req, res) => {
   });
 });
 
-app.post("/message", (req, res) => {
+app.post("/", (req, res) => {
+  console.log(req.params.id);
   const sql = "INSERT INTO results SET ?";
   con.query(sql, req.body, function (err, result, fields) {
     if (err) throw err;
