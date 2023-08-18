@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <link type="text/css" rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <h1>アンケート入力フォーム</h1>
+        <form action="/message" method="POST">
+            <div class="form-wrap">
+                <label for="name">名前<span class="colorRed">*</span></label><input id="name" type="text" name="name" required><br>
+                <p class="errName"></p>
+                <label for="furigana">かな<span class="colorRed">*</span></label><input id="furigana" type="text" name="furigana" required><br>
+                <p class="errFurigana"></p>
+                <label for="gender1, gender2">性別<span class="colorRed">*</span></label>
+                <input id="gender1" type="radio" name="gender" value="男" required>男 <input id="gender2" type="radio" name="gender" value="女" required>女<br>
+                <p class="errGender"></p>
+                <label for="email">email<span class="colorRed">*</span></label><input id="email" type="text" name="email" placeholder="info@example.com" required><br>
+                <p class="errEmail"></p>
+                <label for="address">お住いの住所<span class="colorRed">*</span></label><input id="address" type="text" name="address" required><br>
+                <p class="errAddress"></p>
+                <label for="tel">電話番号<span class="colorRed">*</span></label><input id="tel" type="text" name="tel" placeholder="080-1234-5678" required><br>
+                <p class="errTel"></p> 当サイトを知った理由<br>
+                <input id="reason1" type="checkbox" name="reasonForVisit" value="広告で知った"> 広告で知った<br>
+                <input id="reason2" type="checkbox" name="reasonForVisit" value="サイトを見た"> サイトを見た<br>
+                <input id="reason3" type="checkbox" name="reasonForVisit" value="知人から教えてもらった"> 知人から教えてもらった<br>
+                <input id="reason4" class="mb" type="checkbox" name="reasonForVisit" value="YouTubeの広告を見た"> YouTubeの広告を見た<br> 問い合わせ内容<br>
+                <textarea id="inquiry" name="inquiry" cols="30" rows="10"></textarea><br>
+                <button id="btn" type="submit" disabled>送 信</button>
+            </div>
+        </form>
+        <script>
+            let name = document.querySelector('#name');
+            let furigana = document.querySelector('#furigana');
+            let gender1 = document.querySelector('#gender1');
+            let gender2 = document.querySelector('#gender2');
+            let email = document.querySelector('#email');
+            let address = document.querySelector('#address');
+            let tel = document.querySelector('#tel');
+            let reason1 = document.querySelector('#reason1');
+            let reason2 = document.querySelector('#reason2');
+            let reason3 = document.querySelector('#reason3');
+            let reason4 = document.querySelector('#reason4');
+            let inquiry = document.querySelector('#inquiry');
+            let btn = document.querySelector('#btn');
+
+            let errName = document.querySelector('.errName');
+            let errFurigana = document.querySelector('.errFurigana');
+            let errGender = document.querySelector('.errGender');
+            let errEmail = document.querySelector('.errEmail');
+            let errAddress = document.querySelector('.errAddress');
+            let errTel = document.querySelector('.errTel');
+
+            // 各フォームバリデーション
+            function nameValid() {
+                // 名前
+                if (!name.value.match(/^[ぁ-んア-ヶｱ-ﾝﾞﾟ一-龠]*$/)) {
+                    errName.innerHTML = "日本語で入力してください";
+                } else {
+                    errName.innerHTML = "";
+                }
+            }
+            function furiganaValid() {
+                // かな
+                if (!furigana.value.match(/^[ぁ-ん]*$/)) {
+                    errFurigana.innerHTML = "ひらがなで入力してください";
+                } else {
+                    errFurigana.innerHTML = "";
+                }
+            }
+            function emailValid() {
+                // email
+                if (!email.value.match(/[\w\-._]+@[\w\-._]+\.[A-Za-z]+/)) {
+                    errEmail.innerHTML = "例）info@example.comのように入力してください";
+                } else {
+                    errEmail.innerHTML = "";
+                }
+            }
+            function addressValid() {
+                // 住所
+                if (!address.value.match(/^[ぁ-んﾞﾟ一-龠0-9a-zA-Z]*$/)) {
+                    errAddress.innerHTML = "漢字、ひらがな、数字、半角英数字のみで入力してください";
+                } else {
+                    errAddress.innerHTML = "";
+                }
+            }
+            function telValid() {
+                // 電話番号
+                if (!tel.value.match(/\d{2,4}-\d{2,4}-\d{4}/)) {
+                    errTel.innerHTML = "例）080-1234-5678のように入力してください";
+                } else {
+                    errTel.innerHTML = "";
+                }
+            }
+            // 全入力チェック
+            function blankValid() {
+                if (name.value !== "" && furigana.value !== "" && email.value !== "" && address.value !== "" && tel.value !== "" && errName.innerHTML === "" && errFurigana.innerHTML === "" && errEmail.innerHTML === "" && errAddress.innerHTML === "" && errTel.innerHTML === "") {
+                    btn.disabled = false;
+                }
+            }
+            // ボタンクリック
+            function clickBtn() {
+                // 性別
+                if (!gender1.checked && !gender2.checked) {
+                    errGender.innerHTML = "どちらかにチェックを入れてください"
+                }
+            }
+            name.addEventListener('change', nameValid);
+            name.addEventListener('change', blankValid);
+            furigana.addEventListener('change', furiganaValid);
+            furigana.addEventListener('change', blankValid);
+            email.addEventListener('change', emailValid);
+            email.addEventListener('change', blankValid);
+            address.addEventListener('change', addressValid);
+            address.addEventListener('change', blankValid);
+            tel.addEventListener('change', telValid);
+            tel.addEventListener('change', blankValid);
+
+            btn.addEventListener('click', clickBtn);
+        </script>
+    </body>
+</html>

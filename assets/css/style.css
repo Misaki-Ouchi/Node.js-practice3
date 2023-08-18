@@ -1,0 +1,42 @@
+h1 {
+  color: #0a0;
+  margin: 1rem;
+}
+form {
+  background-color: #eee;
+}
+.form-wrap {
+  width: 90%;
+  padding: 1rem;
+  margin: auto;
+}
+label {
+  display: inline-block;
+  width: 7rem;
+}
+.mb,
+textarea {
+  margin-bottom: 1rem;
+}
+input[type=label],
+textarea {
+  width: 100%;
+}
+button {
+  display: block;
+  padding: 0.2rem 2rem;
+}
+
+.colorRed {
+  color: red;
+}
+#thanks {
+  background-color: #a00;
+}
+#thanks p {
+  text-align: center;
+  color: #ddd;
+  font-weight: bold;
+  font-size: 3rem;
+  margin-top: 20%;
+}
