@@ -52,17 +52,17 @@ app.post("/", (req, res) => {
     function (err, result, fields) {
       if (err) throw err;
       console.log(result);
-      res.redirect("/");
+      res.send("アンケートへのご協力ありがとうございました。");
     }
-  );
+    );
 });
 
 app.get("/create", (req, res) => {
   res.sendFile(path.join(__dirname, "html/form.html"));
 });
 
-app.post("/message", (req, res) => {
-  res.sendFile(path.join(__dirname, "html/thanksPage.html"));
-});
+// app.post("/message", (req, res) => {
+//   res.sendFile(path.join(__dirname, "html/thanksPage.html"));
+// });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
