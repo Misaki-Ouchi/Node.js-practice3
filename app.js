@@ -5,12 +5,12 @@ const ejs = require("ejs");
 const app = express();
 const port = 3000;
 
+app.set("view engine", "ejs");
 app.use(
   bodyParser.urlencoded({
     extended: true,
   })
 );
-app.set("view engine", "ejs");
 
 const mysql = require("mysql2");
 
@@ -30,19 +30,33 @@ app.get("/", (req, res) => {
   con.query(sql, function (err, result, fields) {
     if (err) throw err;
     res.render("index", {
-      users: result
+      results: result,
     });
   });
 });
 
 app.post("/", (req, res) => {
   console.log(req.params.id);
-  const sql = "INSERT INTO results SET ?";
-  con.query(sql, req.body, function (err, result, fields) {
-    if (err) throw err;
-    console.log(result);
-    res.redirect("/");
-  });
+  // const sql = "INSERT INTO results SET ?";
+  con.query(
+    sql,
+    "INSERT INTO results(id,name, furigana, gender, email, address, tel, reasonForVisit, inquiry) VALUES (0, ?, ?, ?, ?, ?, ?, ?, ?)",
+    [
+      req.body.name,
+      req.body.furigana,
+      req.body.gender,
+      req.body.email,
+      req.body.address,
+      req.body.tel,
+      req.body.reasonForVisit,
+      req.body.inquiry,
+    ],
+    function (err, result, fields) {
+      if (err) throw err;
+      console.log(result);
+      res.redirect("/");
+    }
+  );
 });
 
 app.get("/create", (req, res) => {
