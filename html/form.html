@@ -7,25 +7,53 @@
     </head>
     <body>
         <h1>アンケート入力フォーム</h1>
-        <form action="/message" method="POST">
+        <form action="/" method="POST">
             <div class="form-wrap">
-                <label for="name">名前<span class="colorRed">*</span></label><input id="name" type="text" name="name" required><br>
+                <label for="name">
+                    名前<span class="colorRed">*</span>
+                </label>
+                <input id="name" type="text" name="name" required><br>
                 <p class="errName"></p>
-                <label for="furigana">かな<span class="colorRed">*</span></label><input id="furigana" type="text" name="furigana" required><br>
+
+                <label for="furigana">
+                    かな<span class="colorRed">*</span>
+                </label>
+                    <input id="furigana" type="text" name="furigana" required><br>
                 <p class="errFurigana"></p>
-                <label for="gender1, gender2">性別<span class="colorRed">*</span></label>
-                <input id="gender1" type="radio" name="gender" value="男" required>男 <input id="gender2" type="radio" name="gender" value="女" required>女<br>
+
+                <label for="gender1, gender2">
+                    性別<span class="colorRed">*</span>
+                </label>
+                <input id="gender1" type="radio" name="gender" value="男" required>男 
+                <input id="gender2" type="radio" name="gender" value="女" required>女<br>
                 <p class="errGender"></p>
-                <label for="email">email<span class="colorRed">*</span></label><input id="email" type="text" name="email" placeholder="info@example.com" required><br>
+
+                <label for="email">
+                    email<span class="colorRed">*</span>
+                </label>
+                <input id="email" type="text" name="email" placeholder="info@example.com" required><br>
                 <p class="errEmail"></p>
-                <label for="address">お住いの住所<span class="colorRed">*</span></label><input id="address" type="text" name="address" required><br>
+
+                <label for="address">
+                    お住いの住所<span class="colorRed">*</span>
+                </label>
+                <input id="address" type="text" name="address" required><br>
                 <p class="errAddress"></p>
-                <label for="tel">電話番号<span class="colorRed">*</span></label><input id="tel" type="text" name="tel" placeholder="080-1234-5678" required><br>
-                <p class="errTel"></p> 当サイトを知った理由<br>
+
+                <label for="tel">
+                    電話番号
+                    <span class="colorRed">*</span>
+                </label>
+                <input id="tel" type="text" name="tel" placeholder="080-1234-5678" required><br>
+                <p class="errTel"></p>
+                
+                当サイトを知った理由<br>
                 <input id="reason1" type="checkbox" name="reasonForVisit" value="広告で知った"> 広告で知った<br>
                 <input id="reason2" type="checkbox" name="reasonForVisit" value="サイトを見た"> サイトを見た<br>
                 <input id="reason3" type="checkbox" name="reasonForVisit" value="知人から教えてもらった"> 知人から教えてもらった<br>
-                <input id="reason4" class="mb" type="checkbox" name="reasonForVisit" value="YouTubeの広告を見た"> YouTubeの広告を見た<br> 問い合わせ内容<br>
+                <input id="reason4" class="mb" type="checkbox" name="reasonForVisit" value="YouTubeの広告を見た"> YouTubeの広告を見た<br>
+                
+                問い合わせ内容<br>
                 <textarea id="inquiry" name="inquiry" cols="30" rows="10"></textarea><br>
                 <button id="btn" type="submit" disabled>送 信</button>
             </div>
