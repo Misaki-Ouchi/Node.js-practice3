@@ -61,8 +61,4 @@ app.get("/create", (req, res) => {
   res.sendFile(path.join(__dirname, "html/form.html"));
 });
 
-// app.post("/message", (req, res) => {
-//   res.sendFile(path.join(__dirname, "html/thanksPage.html"));
-// });
-
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
