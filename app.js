@@ -37,10 +37,8 @@ app.get("/", (req, res) => {
 
 app.post("/", (req, res) => {
   console.log(req.params.id);
-  // const sql = "INSERT INTO results SET ?";
   con.query(
-    sql,
-    "INSERT INTO results(id,name, furigana, gender, email, address, tel, reasonForVisit, inquiry) VALUES (0, ?, ?, ?, ?, ?, ?, ?, ?)",
+    "INSERT INTO results(name, furigana, gender, email, address, tel, reasonForVisit, inquiry) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
     [
       req.body.name,
       req.body.furigana,
